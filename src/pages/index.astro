@@ -11,23 +11,23 @@ import PronounsBlade from '../components/blades/Pronouns.astro'
 ---
 
 <Layout title="Maranville.IO">
-	<main class="w-full grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 p-20 text-gray-light font-thin max-w-screen-xl m-auto md:min-h-screen lg:h-screen max-h-210 overflow-y-scroll min-h-fit">
-		<HeroBlade class="md:col-span-3 lg:row-span-2 flex flex-col md:flex-row md:h-max lg:h-auto lg:min-h-52"/>
+	<main class="w-full grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 p-20 text-gray-light font-thin max-w-screen-xl m-auto md:min-h-screen lg:h-screen max-h-210 md:overflow-y-auto min-h-fit">
+		<HeroBlade class="md:col-span-3 lg:row-span-2 flex flex-col md:flex-row h-max lg:h-auto lg:min-h-52 order-1"/>
 
-		<AboutBlade class="text-gray-light row-span-3 prose"/>
+		<AboutBlade class="text-gray-light row-span-3 prose h-max md:h-auto order-2"/>
 
-		<SocialBlade class="sm:row-span-2 space-y-4"/>
+		<SocialBlade class="sm:row-span-2 space-y-4 h-max md:h-auto order-3"/>
 
-		<TimezoneBlade class="lg:col-span-2 flex flex-col space-y-2 h-max"/>
+		<TimezoneBlade class="lg:col-span-2 flex flex-col space-y-2 h-max order-4"/>
 
-		<NowBlade/>
+		<NowBlade class="h-max md:h-auto order-5"/>
 
-		<PronounsBlade class="order-8"/>
+		<PronounsBlade class="h-max md:h-auto order-6 md:order-7"/>
 
-		<div class="grid grid-cols-subgrid gap-6">
-			<SupportMeBlade/>
+		<div class="grid grid-cols-subgrid gap-6 order-7 md:order-6">
+			<SupportMeBlade class="h-max md:h-auto"/>
 
-			<MadeByBlade/>
+			<MadeByBlade class="h-max md:h-auto"/>
 		</div>
 	</main>
 </Layout>
