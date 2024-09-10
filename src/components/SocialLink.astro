@@ -4,16 +4,31 @@ interface Props {
 	icon: string;
 }
 
-const {href, icon} = Astro.props
+type SimpleIconModule = {
+	[key: string]: any;
+};
 
-let Icon;
+const {href, icon} = Astro.props;
 
-// Attempt to dynamically import the icon and provide a default fallback if it doesn't exist
+let Icon: SimpleIconModule[keyof SimpleIconModule] | undefined;
+
 try {
-	Icon = await import('simple-icons-astro').then(mod => mod[icon]);
+	Icon = await import('simple-icons-astro').then((mod: SimpleIconModule) => {
+		if (icon in mod) {
+			return mod[icon as keyof typeof mod];
+		} else {
+			throw new Error(`Icon "${icon}" not found.`);
+		}
+	});
 } catch (error) {
-	console.error(`Icon "${icon}" not found. Using default icon.`);
-	Icon = await import('simple-icons-astro').then(mod => mod.Simpleicons);
+	if (error instanceof Error) {
+		console.error(error.message);
+	} else {
+		console.error('An unknown error occurred.');
+	}
+
+	// Fallback to a default icon
+	Icon = await import('simple-icons-astro').then((mod) => mod.Simpleicons);
 }
 
 const isValidIcon = typeof Icon === 'function' || typeof Icon === 'object';
