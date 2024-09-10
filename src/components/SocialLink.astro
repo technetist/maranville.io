@@ -1,0 +1,27 @@
+---
+interface Props {
+	href: string;
+	icon: string;
+}
+
+const {href, icon} = Astro.props
+
+let Icon;
+
+// Attempt to dynamically import the icon and provide a default fallback if it doesn't exist
+try {
+	Icon = await import('simple-icons-astro').then(mod => mod[icon]);
+} catch (error) {
+	console.error(`Icon "${icon}" not found. Using default icon.`);
+	Icon = await import('simple-icons-astro').then(mod => mod.Simpleicons);
+}
+
+const isValidIcon = typeof Icon === 'function' || typeof Icon === 'object';
+---
+
+<a href={href}
+   target="_blank"
+   class="h-10 w-10 rounded border-purple border-2 flex items-center justify-center shadow-[2px_2px_0px_0px_rgba(189,147,249,1)] hover:text-purple hover:border-purple hover:cursor-pointer active:shadow-none active:translate-x-1 active:translate-y-1">
+	{isValidIcon ?
+		  <Icon/> : null}
+</a>

@@ -1,0 +1,22 @@
+---
+import Card from '../Card.astro'
+
+const {class: className} = Astro.props
+---
+
+<Card class={[className]}>
+	<h2 class="text-lg font-medium">Let's collaborate!</h2>
+	<div>
+		<h3 class="font-thin italic mb-1 underline">Contact Details</h3>
+		<a href="mailto:adrien@maranville.io">adrien@maranville.io</a>
+	</div>
+	<div>
+		<h3 class="font-thin italic mb-1 underline">Socials</h3>
+		<ul>
+			<li><a class="hover:underline" href="https://github.com/technetist">GitHub</a></li>
+			<li><a class="hover:underline" href="https://www.linkedin.com/in/adrienmaranville">LinkedIn</a>
+			<li><a class="hover:underline" href="https://x.com/technetist/">X</a>
+			</li>
+		</ul>
+	</div>
+</Card>

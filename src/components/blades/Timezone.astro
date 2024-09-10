@@ -1,0 +1,11 @@
+---
+import Clock from '../Clock.astro'
+import Card from '../Card.astro'
+
+const {class: className} = Astro.props
+---
+
+<Card class={[className]}>
+	<h2 class="flex-grow-0">Timezone</h2>
+	<Clock class="text-4xl flex-grow flex justify-center items-center font-black"/>
+</Card>

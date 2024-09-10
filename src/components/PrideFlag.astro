@@ -1,0 +1,84 @@
+---
+import range from 'lodash.range';
+
+const colors = [
+	'#FFF530', // Yellow
+	'#FFFFFF', // White
+	'#9C59D2', // Purple
+	'#000000', // Black
+];
+
+const {
+	class: className,
+	width = 200,
+	numOfColumns = 10,
+	staggeredDelay = 100,
+	billow = 2,
+} = Astro.props
+
+const friendlyWidth =
+	Math.round(width / numOfColumns) * numOfColumns;
+
+const firstColumnDelay = numOfColumns * staggeredDelay * -1;
+
+
+function generateGradientString(colors: string[]) {
+	const numOfColors = colors.length;
+	const segmentHeight = 100 / numOfColors;
+
+	const gradientStops = colors.map((color: string, index: number) => {
+		const from = index * segmentHeight;
+		const to = (index + 1) * segmentHeight;
+
+		return `${color} ${from}% ${to}%`;
+	});
+
+	return `linear-gradient(to bottom, ${gradientStops.join(', ')})`;
+}
+---
+
+<div class:list={['flag flex aspect-[3/2]', className]}  style={{width: friendlyWidth}}>
+	{range(numOfColumns).map((index: number) => (
+		  <div
+				  class='column'
+				  style={{
+										'--billow': index * billow + 'px',
+										background: generateGradientString(colors),
+										animationDelay:
+											firstColumnDelay + index * staggeredDelay + 'ms',
+									}}
+		  />
+	))}
+</div>
+
+<style>
+    @keyframes oscillate {
+        from {
+            transform: translateY(var(--billow));
+        }
+        to {
+            transform: translateY(calc(var(--billow) * -1));
+        }
+    }
+
+    .flag {
+        animation-duration: 600ms;
+    }
+
+    .column {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        animation: oscillate 500ms alternate infinite ease-in-out both;
+    }
+
+    .column:first-child {
+        border-top-left-radius: 8px;
+        border-bottom-left-radius: 8px;
+    }
+
+    .column:last-child {
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 8px;
+    }
+</style>

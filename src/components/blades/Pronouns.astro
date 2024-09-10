@@ -1,0 +1,11 @@
+---
+import PrideFlag from '../PrideFlag.astro'
+import Card from '../Card.astro'
+
+const {class: className} = Astro.props
+---
+
+<Card class={[className]}>
+	<PrideFlag class="my-8 h-40 mx-auto md:h-auto"/>
+	<p>I'm non-binary, and my pronouns are <span class="text-pink italic">they/them</span>.</p>
+</Card>

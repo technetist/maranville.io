@@ -1,0 +1,45 @@
+---
+import {Image} from 'astro:assets';
+import avatar from '../../assets/images/avatar.png';
+import Card from '../Card.astro'
+import SocialLink from '../SocialLink.astro'
+
+const socialLinks = [
+	{
+		href: 'https://github.com/technetist',
+		icon: 'Github',
+	},
+	{
+		href: 'https://www.linkedin.com/in/adrienmaranville/',
+		icon: 'Linkedin',
+	},
+	{
+		href: 'https://exercism.org/profiles/technetist',
+		icon: 'Exercism',
+	},
+	{
+		href: 'https://app.codesignal.com/profile/_adrien_m_',
+		icon: 'Codesignal',
+	},
+]
+
+const {class: className} = Astro.props
+---
+
+<Card class={[className]}>
+	<div class="flex flex-col">
+		<h2 class="text-xs font-thin">welcome</h2>
+		<p class="text-2xl flex-grow">Hi, I'm <strong class="font-medium">Adrien Maranville</strong>, a web
+			developer
+			specializing in user-centric design and interactive experiences.</p>
+		<div class="mt-6 flex flex-row gap-4">
+					{socialLinks.map(({href, icon}) => (
+				  <SocialLink
+						  href={href}
+						  icon={icon}
+				  />
+					))}
+		</div>
+	</div>
+	<Image class="w-auto h-full max-w-56 max-h-56 self-end" src={avatar} alt="Memoji&trade; of Adrien waving"></Image>
+</Card>

@@ -1,0 +1,20 @@
+---
+import Card from '../Card.astro'
+
+const {class: className} = Astro.props
+---
+
+<Card class={[className]}>
+	<h2 class="text-lg text-gray-light font-medium">About Me</h2>
+	<p class="text-sm">Hi, I'm Adrien, a full-stack web developer. My primary tech stack includes:</p>
+	<ul class="text-sm list-disc list-inside not-prose">
+		<li>Typescript</li>
+		<li>Laravel</li>
+		<li>Vue</li>
+		<li>Go</li>
+	</ul>
+	<p class="text-sm">
+		I am always looking for new ways to improve my skills. I'm currently working on a few projects,
+		including a personal blog and a web-based game.
+	</p>
+</Card>

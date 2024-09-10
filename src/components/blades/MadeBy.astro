@@ -1,0 +1,15 @@
+---
+import Card from '../Card.astro'
+
+const {class: className} = Astro.props
+---
+
+<Card class={[className]}>
+	<p class="text-xs">&copy; {new Date().getFullYear()} <span class="font-black text-base">&middot;</span>
+		Crafted with &#128156;, using <a href="//astro.build" target="_blank"
+										 rel="noopener noreferrer nofollow" class="underline">Astro</a>, by
+		Adrien.</p>
+	<p class="text-xs mt-2">Based on <a href="https://github.com/Ladvace/astro-bento-portfolio"
+										target="_blank" class="underline">Ladvace/astro-bento-portfolio</a>
+	</p>
+</Card>

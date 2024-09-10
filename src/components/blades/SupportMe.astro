@@ -1,0 +1,11 @@
+---
+import Card from '../Card.astro'
+
+const {class: className} = Astro.props
+---
+
+<Card class={[className]}>
+	<h2 class="text-lg text-gray-light font-medium">Want to support my work?</h2>
+	<p class="text-sm mt-4">Consider <a href="//ko-fi.com/technetist" target="_blank" class="underline">buying
+		me a coffee</a>.</p>
+</Card>

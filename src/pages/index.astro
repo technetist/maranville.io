@@ -1,0 +1,28 @@
+---
+import Layout from '../layouts/Layout.astro';
+import AboutBlade from '../components/blades/About.astro'
+import HeroBlade from '../components/blades/Hero.astro'
+import SocialBlade from '../components/blades/Social.astro'
+import TimezoneBlade from '../components/blades/Timezone.astro'
+import NowBlade from '../components/blades/Now.astro'
+import MadeByBlade from '../components/blades/MadeBy.astro'
+import SupportMeBlade from '../components/blades/SupportMe.astro'
+import PronounsBlade from '../components/blades/Pronouns.astro'
+---
+
+<Layout title="Maranville.IO">
+	<main class="w-full grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 p-20 text-gray-light font-thin max-w-screen-xl m-auto md:min-h-screen lg:h-screen max-h-210 overflow-y-scroll min-h-fit">
+		<HeroBlade class="md:col-span-3 lg:row-span-2 flex flex-col md:flex-row md:h-max lg:h-auto overflow-hidden"/>
+		<AboutBlade class="text-gray-light row-span-3 prose"/>
+		<SocialBlade class="sm:row-span-2 space-y-4"/>
+		<TimezoneBlade class="lg:col-span-2 flex flex-col space-y-2 h-max"/>
+		<NowBlade/>
+		<PronounsBlade class="order-8"/>
+
+		<div class="grid grid-cols-subgrid gap-6">
+			<SupportMeBlade/>
+			<MadeByBlade/>
+		</div>
+	</main>
+</Layout>
+

@@ -1,0 +1,14 @@
+---
+import Card from '../Card.astro'
+
+const {class: className} = Astro.props
+---
+
+<Card class={[className]}>
+	<h2 class="text-lg text-gray-light font-medium">/now</h2>
+	<a href="//sive.rs/nowff" target="_blank" rel="noopener noreferrer nofollow" class="text-gray-400 text-xs">Learn
+		More</a>
+	<p class="text-sm mt-4">Currently, I'm working for <a href="//helloeyes.ca" target="_blank"
+														  rel="noopener noreferrer nofollow" class="underline">Hello
+		Eyes</a>.</p>
+</Card>
